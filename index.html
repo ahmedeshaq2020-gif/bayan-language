@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بيان للتحرير اللغوي</title>
+<style>
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: #f8f7f2;
+  color: #263d32;
+  line-height: 1.9;
+}
+header {
+  background: #294b3b;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+header h1 { margin: 0; }
+.hero {
+  text-align: center;
+  padding: 55px 20px;
+  background: #e8eee7;
+}
+.hero h2 { font-size: 30px; }
+main {
+  max-width: 850px;
+  margin: auto;
+  padding: 25px 18px;
+}
+.card {
+  background: white;
+  padding: 22px;
+  margin: 18px 0;
+  border-radius: 12px;
+  border: 1px solid #e1e5dc;
+}
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 15px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5ca;
+  border-radius: 7px;
+  font: inherit;
+}
+button {
+  background: #294b3b;
+  color: white;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 7px;
+  font: inherit;
+  cursor: pointer;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #294b3b;
+  color: white;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>بيان للتحرير اللغوي</h1>
+  <p>دقة في اللغة، ووضوح في المعنى</p>
+</header>
+
+<section class="hero">
+  <h2>نصّك يستحق عناية لغوية تليق به</h2>
+  <p>التدقيق اللغوي وتحسين الصياغة والأسلوب، مع الحفاظ على المعنى الأصلي.</p>
+</section>
+
+<main>
+  <section class="card">
+    <h2>خدماتنا</h2>
+    <h3>التدقيق اللغوي</h3>
+    <p>مراجعة الأخطاء الإملائية والنحوية والصرفية وعلامات الترقيم.</p>
+    <h3>تحسين الصياغة والأسلوب</h3>
+    <p>تحسين وضوح النص وسلامة عباراته دون الإخلال بمعناه.</p>
+    <h3>مراجعة النصوص الأكاديمية</h3>
+    <p>عناية باللغة والمصطلحات في البحوث والدراسات والمقالات.</p>
+  </section>
+
+  <section class="card">
+    <h2>أرسل رابط النص المراد تدقيقه</h2>
+    <p>ضع رابط المستند، واكتب ملاحظاتك إن وجدت.</p>
+    <form id="requestForm">
+      <label for="docLink">رابط المستند</label>
+      <input id="docLink" type="url" placeholder="https://..." required>
+      <label for="notes">تفاصيل الطلب</label>
+      <textarea id="notes" rows="4" placeholder="نوع النص والخدمة المطلوبة"></textarea>
+      <button type="submit">تجهيز طلب التدقيق</button>
+    </form>
+    <p id="result"></p>
+  </section>
+</main>
+
+<footer>
+  بيان للتحرير اللغوي — نعتني بلغتك
+</footer>
+
+<script>
+document.getElementById("requestForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const link = document.getElementById("docLink").value;
+  const notes = document.getElementById("notes").value;
+  const message = "طلب تدقيق لغوي\nرابط المستند: " + link + "\nتفاصيل الطلب: " + notes;
+  document.getElementById("result").textContent = message;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(message).catch(function() {});
+  }
+});
+</script>
+</body>
+</html>
